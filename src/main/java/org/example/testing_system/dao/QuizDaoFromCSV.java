@@ -1,6 +1,9 @@
 package org.example.testing_system.dao;
 
 import org.example.testing_system.domain.Quiz;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -10,12 +13,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class QuizDaoFromCSV implements QuizDao {
 
     private String filePath;
     private List<Quiz> quizzes;
 
-    public QuizDaoFromCSV(String filePath) {
+
+    public QuizDaoFromCSV(@Value("${dao.file}") String filePath) {
         this.filePath = filePath;
         quizzes = new ArrayList<>();
         parseFile();

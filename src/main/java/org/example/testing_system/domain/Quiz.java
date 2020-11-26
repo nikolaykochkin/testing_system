@@ -22,4 +22,18 @@ public class Quiz {
     public int getAnswer() {
         return answer;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(question);
+        for (int i = 0; i < options.length; i++) {
+            sb
+                    .append("\n")
+                    .append(i + 1)
+                    .append(". ")
+                    .append(options[i]);
+        }
+
+        return sb.toString();
+    }
 }
